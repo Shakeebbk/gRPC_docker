@@ -1,0 +1,28 @@
+syntax = "proto2";
+
+// needed for dynamic proto js
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.myapp";
+option java_outer_classname = "MyAppProto";
+option objc_class_prefix = "HLW";
+
+package myapp;
+
+service myapp {
+    rpc sayHello(queryRequest) returns(queryResponse) {}
+}
+
+// The request message containing the user's name.
+message queryRequest {
+  required string queryString = 1;
+}
+
+// The response message containing the greetings
+message queryResponse {
+    repeated Result results = 1;
+}
+
+message Result {
+   required string query = 2;
+   required string response = 3;
+}
